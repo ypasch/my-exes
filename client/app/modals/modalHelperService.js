@@ -16,7 +16,7 @@ class ModalHelperService {
         quick: this.quick,
         description: this.description
       },
-      template: '<add-spending quick="vm.quick" description="vm.description"></add-spending>',
+      template: `<add-spending quick="vm.quick" description="vm.description"></add-spending>`,
       controller: ['quick', 'description', function(quick, description) {
         this.quick = quick ? quick : false;
         this.description = description ? description : '';
