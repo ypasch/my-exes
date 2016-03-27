@@ -1,16 +1,16 @@
 class ModalHelperService {
+
   constructor($uibModal) {
     this.$uibModal = $uibModal;
     this.animationsEnabled = true;
   }
 
-
-  addSpending(quick, description) {
+  addNewSpending(quick, description) {
     this.quick = quick;
     this.description = description ? description : '';
-    return this.$uibModal.open({
+    this.$uibModal.open({
       animation: this.animationsEnabled,
-      templateUrl: `<add-spending quick="vm.quick" description="vm.description"></add-spending>`,
+      template: `<add-spending quick="vm.quick" description="vm.description"></add-spending>`,
       controller: function(quick, description) {
         this.quick = quick;
         this.description = description;
@@ -23,6 +23,7 @@ class ModalHelperService {
       }
     });
   };
+
 
   toggleAnimation() {
     this.animationsEnabled = !this.animationsEnabled;

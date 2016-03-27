@@ -35,8 +35,8 @@ class MainController {
     this.$http.delete('/api/things/' + thing._id);
   }
 
-  addNewThing() {
-    this.modalHelperService.addSpending('sm');
+  addNewThing(quick, description) {
+    return this.modalHelperService.addNewSpending(quick, description);
   }
 
 }
