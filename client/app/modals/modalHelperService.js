@@ -1,8 +1,12 @@
 class ModalHelperService {
 
-  constructor($uibModal) {
+  constructor($uibModal, categoriesService) {
     this.$uibModal = $uibModal;
+    this.categoriesService = categoriesService;
     this.animationsEnabled = true;
+
+    this.categories = this.categoriesService.getCategories();
+    console.log(this.categories);
   }
 
   addNewSpending(quick, description) {
@@ -10,7 +14,7 @@ class ModalHelperService {
     this.description = description ? description : '';
     this.$uibModal.open({
       animation: this.animationsEnabled,
-      template: `<add-spending quick="vm.quick" description="vm.description"></add-spending>`,
+      template: '<add-spending quick="vm.quick" description="vm.description"></add-spending>',
       controller: function(quick, description) {
         this.quick = quick;
         this.description = description;
@@ -31,7 +35,7 @@ class ModalHelperService {
 
 }
 
-ModalHelperService.$inject = ['$uibModal'];
+ModalHelperService.$inject = ['$uibModal', 'categoriesService'];
 
 angular.module('myExesApp')
   .service('modalHelperService', ModalHelperService);

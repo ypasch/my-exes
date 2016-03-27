@@ -1,7 +1,3 @@
-'use strict';
-
-(function() {
-
 class MainController {
 
   constructor($http, $scope, socket, modalHelperService) {
@@ -49,4 +45,3 @@ angular.module('myExesApp')
     controllerAs: 'vm'
   });
 
-})();
