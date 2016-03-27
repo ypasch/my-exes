@@ -4,11 +4,11 @@
 
 class MainController {
 
-  constructor($http, $scope, socket, ModalInstanceService) {
+  constructor($http, $scope, socket, modalHelperService) {
     this.$http = $http;
     this.$scope = $scope;
     this.socket = socket;
-    this.ModalInstanceService = ModalInstanceService;
+    this.modalHelperService = modalHelperService;
     this.awesomeThings = [];
 
 
@@ -36,7 +36,7 @@ class MainController {
   }
 
   addNewThing() {
-    this.ModalInstanceService.open('lg');
+    this.modalHelperService.addSpending('sm');
   }
 
 }
@@ -45,7 +45,8 @@ class MainController {
 angular.module('myExesApp')
   .component('main', {
     templateUrl: 'app/main/main.html',
-    controller: MainController
+    controller: MainController,
+    controllerAs: 'vm'
   });
 
 })();
