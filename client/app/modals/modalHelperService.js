@@ -10,21 +10,19 @@ class ModalHelperService {
   }
 
   addNewSpending(quick, description) {
-    this.quick = quick;
-    this.description = description ? description : '';
-    this.$uibModal.open({
+    return this.$uibModal.open({
       animation: this.animationsEnabled,
-      template: '<add-spending quick="vm.quick" description="vm.description"></add-spending>',
-      controller: function(quick, description) {
-        this.quick = quick;
-        this.description = description;
-      },
-      controllerAs: 'vm',
-      size: 'sm',
       resolve: {
         quick: this.quick,
         description: this.description
-      }
+      },
+      template: '<add-spending quick="vm.quick" description="vm.description"></add-spending>',
+      controller: ['quick', 'description', function(quick, description) {
+        this.quick = quick ? quick : false;
+        this.description = description ? description : '';
+      }],
+      controllerAs: 'vm',
+      size: 'sm'
     });
   };
 
