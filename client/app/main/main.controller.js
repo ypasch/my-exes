@@ -4,10 +4,13 @@
 
 class MainController {
 
-  constructor($http, $scope, socket) {
+  constructor($http, $scope, socket, ModalInstanceService) {
     this.$http = $http;
+    this.$scope = $scope;
     this.socket = socket;
+    this.ModalInstanceService = ModalInstanceService;
     this.awesomeThings = [];
+
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('thing');
@@ -31,7 +34,13 @@ class MainController {
   deleteThing(thing) {
     this.$http.delete('/api/things/' + thing._id);
   }
+
+  addNewThing() {
+    this.ModalInstanceService.open('lg');
+  }
+
 }
+
 
 angular.module('myExesApp')
   .component('main', {
