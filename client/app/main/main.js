@@ -6,5 +6,9 @@ angular.module('myExesApp')
       .state('main', {
         url: '/',
         template: '<main></main>'
+      })
+      .state('reports', {
+        url: '/reports',
+        template: '<reports></reports>'
       });
   });
